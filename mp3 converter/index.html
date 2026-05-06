@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SoundRip — Video to MP3 Converter</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+
+  <!-- ── NAVBAR ─────────────────────────────────── -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#home" class="logo">
+        <span class="logo-icon"><i class="fas fa-wave-square"></i></span>
+        <span class="logo-text">Sound<span class="accent">Rip</span></span>
+      </a>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home"     class="nav-link active">Home</a></li>
+        <li><a href="#convert"  class="nav-link">Convert</a></li>
+        <li><a href="#features" class="nav-link">Features</a></li>
+        <li><a href="#about"    class="nav-link">About</a></li>
+        <li><a href="#contact"  class="nav-link">Contact</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+          <i class="fas fa-sun"  id="themeIcon"></i>
+        </button>
+        <button class="hamburger" id="hamburger" aria-label="Open menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ── HERO ───────────────────────────────────── -->
+  <section class="hero" id="home">
+    <div class="hero-bg">
+      <div class="orb orb-1"></div>
+      <div class="orb orb-2"></div>
+      <div class="orb orb-3"></div>
+      <div class="grid-overlay"></div>
+    </div>
+
+    <div class="hero-content">
+      <div class="hero-badge">
+        <i class="fas fa-bolt"></i> Free &amp; Instant Conversion
+      </div>
+      <h1 class="hero-title">
+        Convert Videos<br />
+        to <span class="gradient-text">MP3</span> Instantly
+      </h1>
+      <p class="hero-subtitle">
+        Drop any video file — MP4, AVI, MKV, MOV — and extract crystal-clear
+        audio in seconds. No sign-up. No watermarks. Just pure sound.
+      </p>
+      <div class="hero-cta">
+        <a href="#convert" class="btn btn-primary">
+          <i class="fas fa-upload"></i> Start Converting
+        </a>
+        <a href="#features" class="btn btn-ghost">
+          Learn More <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+
+      <!-- floating waveform bars -->
+      <div class="waveform-display">
+        <div class="wave-bar" style="--h:40%;--d:0s"></div>
+        <div class="wave-bar" style="--h:70%;--d:.1s"></div>
+        <div class="wave-bar" style="--h:55%;--d:.2s"></div>
+        <div class="wave-bar" style="--h:90%;--d:.3s"></div>
+        <div class="wave-bar" style="--h:60%;--d:.4s"></div>
+        <div class="wave-bar" style="--h:80%;--d:.5s"></div>
+        <div class="wave-bar" style="--h:45%;--d:.6s"></div>
+        <div class="wave-bar" style="--h:75%;--d:.7s"></div>
+        <div class="wave-bar" style="--h:65%;--d:.8s"></div>
+        <div class="wave-bar" style="--h:50%;--d:.9s"></div>
+        <div class="wave-bar" style="--h:85%;--d:1s"></div>
+        <div class="wave-bar" style="--h:40%;--d:1.1s"></div>
+        <div class="wave-bar" style="--h:70%;--d:1.2s"></div>
+        <div class="wave-bar" style="--h:95%;--d:1.3s"></div>
+        <div class="wave-bar" style="--h:55%;--d:1.4s"></div>
+        <div class="wave-bar" style="--h:80%;--d:1.5s"></div>
+        <div class="wave-bar" style="--h:35%;--d:1.6s"></div>
+        <div class="wave-bar" style="--h:65%;--d:1.7s"></div>
+        <div class="wave-bar" style="--h:50%;--d:1.8s"></div>
+        <div class="wave-bar" style="--h:75%;--d:1.9s"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── UPLOAD & CONVERT ───────────────────────── -->
+  <section class="convert-section" id="convert">
+    <div class="container">
+      <div class="section-header">
+        <span class="tag">Converter</span>
+        <h2>Upload &amp; Convert</h2>
+        <p>Drag and drop your video or click to browse. We support MP4, AVI, MKV, MOV, WMV &amp; more.</p>
+      </div>
+
+      <div class="converter-card glass">
+
+        <!-- Drop Zone -->
+        <div class="drop-zone" id="dropZone">
+          <input type="file" id="fileInput" accept="video/*" hidden />
+          <div class="drop-content" id="dropContent">
+            <div class="drop-icon">
+              <i class="fas fa-cloud-upload-alt"></i>
+            </div>
+            <p class="drop-title">Drag &amp; Drop your video here</p>
+            <p class="drop-sub">or</p>
+            <button class="btn btn-outline" onclick="document.getElementById('fileInput').click()">
+              <i class="fas fa-folder-open"></i> Browse File
+            </button>
+            <p class="drop-info">Supports MP4 · AVI · MKV · MOV · WMV · FLV (max 500 MB)</p>
+          </div>
+
+          <!-- File selected state -->
+          <div class="file-selected" id="fileSelected" style="display:none">
+            <div class="file-icon"><i class="fas fa-film"></i></div>
+            <div class="file-meta">
+              <p class="file-name" id="fileName">video.mp4</p>
+              <p class="file-size" id="fileSize">0 MB</p>
+            </div>
+            <button class="remove-file" id="removeFile" aria-label="Remove file">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Quality selector -->
+        <div class="quality-row" id="qualityRow" style="display:none">
+          <label class="quality-label"><i class="fas fa-sliders-h"></i> Audio Quality</label>
+          <div class="quality-pills">
+            <button class="pill active" data-q="128">128 kbps</button>
+            <button class="pill" data-q="192">192 kbps</button>
+            <button class="pill" data-q="320">320 kbps</button>
+          </div>
+        </div>
+
+        <!-- Convert button -->
+        <button class="btn btn-primary btn-convert" id="convertBtn" disabled>
+          <i class="fas fa-magic"></i> Convert to MP3
+        </button>
+
+        <!-- Progress -->
+        <div class="progress-wrap" id="progressWrap" style="display:none">
+          <div class="progress-labels">
+            <span id="progressLabel">Processing…</span>
+            <span id="progressPct">0%</span>
+          </div>
+          <div class="progress-bar-track">
+            <div class="progress-bar-fill" id="progressFill"></div>
+          </div>
+          <div class="spinner-row">
+            <div class="spinner"></div>
+            <span id="progressStatus">Uploading file…</span>
+          </div>
+        </div>
+
+        <!-- Download -->
+        <div class="download-wrap glass" id="downloadWrap" style="display:none">
+          <div class="success-badge"><i class="fas fa-check-circle"></i> Conversion Complete!</div>
+          <div class="audio-player">
+            <audio id="audioPreview" controls></audio>
+          </div>
+          <button class="btn btn-primary" id="downloadBtn">
+            <i class="fas fa-download"></i> Download MP3
+          </button>
+          <button class="btn btn-ghost btn-sm" id="resetBtn">Convert Another</button>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FEATURES ────────────────────────────────── -->
+  <section class="features-section" id="features">
+    <div class="container">
+      <div class="section-header">
+        <span class="tag">Why SoundRip?</span>
+        <h2>Built for Speed &amp; Quality</h2>
+        <p>Everything you need for perfect audio extraction, nothing you don't.</p>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card glass" data-aos>
+          <div class="feature-icon gradient-icon">
+            <i class="fas fa-bolt"></i>
+          </div>
+          <h3>Lightning Fast</h3>
+          <p>Our GPU-accelerated pipeline converts 1-hour videos in under 30 seconds. No waiting, no queues.</p>
+        </div>
+        <div class="feature-card glass" data-aos>
+          <div class="feature-icon gradient-icon">
+            <i class="fas fa-headphones"></i>
+          </div>
+          <h3>Studio-Grade Audio</h3>
+          <p>Choose up to 320 kbps bitrate. We preserve stereo channels and embed proper ID3 metadata.</p>
+        </div>
+        <div class="feature-card glass" data-aos>
+          <div class="feature-icon gradient-icon">
+            <i class="fas fa-shield-alt"></i>
+          </div>
+          <h3>Secure &amp; Private</h3>
+          <p>Files are deleted from our servers within 1 hour. Zero logging. Your media stays yours.</p>
+        </div>
+        <div class="feature-card glass" data-aos>
+          <div class="feature-icon gradient-icon">
+            <i class="fas fa-mobile-alt"></i>
+          </div>
+          <h3>Works Everywhere</h3>
+          <p>Fully responsive from 320 px to 4 K. Works on Chrome, Firefox, Safari, and Edge.</p>
+        </div>
+        <div class="feature-card glass" data-aos>
+          <div class="feature-icon gradient-icon">
+            <i class="fas fa-infinity"></i>
+          </div>
+          <h3>Unlimited Conversions</h3>
+          <p>No daily caps, no account needed. Convert as many files as you want, whenever you want.</p>
+        </div>
+        <div class="feature-card glass" data-aos>
+          <div class="feature-icon gradient-icon">
+            <i class="fas fa-file-video"></i>
+          </div>
+          <h3>All Formats</h3>
+          <p>MP4, AVI, MKV, MOV, WMV, FLV, WebM — if it has audio, we can rip it.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── ABOUT ───────────────────────────────────── -->
+  <section class="about-section" id="about">
+    <div class="container about-grid">
+      <div class="about-visual">
+        <div class="about-blob glass">
+          <div class="stat"><span class="stat-num">10M+</span><span class="stat-lbl">Conversions</span></div>
+          <div class="stat"><span class="stat-num">99.9%</span><span class="stat-lbl">Uptime</span></div>
+          <div class="stat"><span class="stat-num">&lt;30s</span><span class="stat-lbl">Avg. Speed</span></div>
+          <div class="stat"><span class="stat-num">500MB</span><span class="stat-lbl">Max Size</span></div>
+        </div>
+      </div>
+      <div class="about-text">
+        <span class="tag">About Us</span>
+        <h2>We Believe Audio<br />Should Be <span class="gradient-text">Free</span></h2>
+        <p>SoundRip was built by a small team of audio engineers and web developers who were frustrated by slow, ad-riddled converters. We built the tool we always wanted — fast, clean, and completely free.</p>
+        <p>Our Java-powered backend uses FFmpeg under the hood to deliver the highest-fidelity extraction possible, while our frontend keeps things effortless for everyone.</p>
+        <a href="#convert" class="btn btn-primary">Try it Now <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CONTACT ─────────────────────────────────── -->
+  <section class="contact-section" id="contact">
+    <div class="container">
+      <div class="section-header">
+        <span class="tag">Contact</span>
+        <h2>Get In Touch</h2>
+        <p>Have a question, suggestion, or bug report? We'd love to hear from you.</p>
+      </div>
+      <div class="contact-card glass">
+        <div class="contact-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Name</label>
+              <input type="text" placeholder="Your name" class="form-input" />
+            </div>
+            <div class="form-group">
+              <label>Email</label>
+              <input type="email" placeholder="you@example.com" class="form-input" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Message</label>
+            <textarea placeholder="Your message…" class="form-input form-textarea" rows="4"></textarea>
+          </div>
+          <button class="btn btn-primary" onclick="handleContact(event)">
+            <i class="fas fa-paper-plane"></i> Send Message
+          </button>
+        </div>
+        <div class="contact-info">
+          <div class="contact-item">
+            <i class="fas fa-envelope"></i>
+            <span>hello@soundrip.io</span>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-clock"></i>
+            <span>Response within 24 hours</span>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-globe"></i>
+            <span>soundrip.io</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ─────────────────────────────────── -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <span class="logo-text">Sound<span class="accent">Rip</span></span>
+        <p>Free video to MP3 conversion, always.</p>
+      </div>
+      <div class="footer-links">
+        <a href="#home">Home</a>
+        <a href="#convert">Convert</a>
+        <a href="#features">Features</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="footer-social">
+        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+        <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        <a href="#" aria-label="Discord"><i class="fab fa-discord"></i></a>
+        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+      </div>
+    </div>
+    <div class="footer-copy">
+      <p>&copy; 2025 SoundRip. All rights reserved. Made with <i class="fas fa-heart" style="color:#b06aff"></i> for music lovers.</p>
+    </div>
+  </footer>
+
+  <!-- Toast container -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
